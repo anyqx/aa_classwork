@@ -6,15 +6,27 @@ class PolyTreeNode
         @value = str
     end
 
+    # reassign parent for children (children given )
     def parent=(parent1)
+
         if @parent == parent1
             return
         end
         if @parent != nil
+
             @parent.children.delete(self)
-        else
-            @parent = parent1
+            
         end
+        if parent1 != nil
+            parent1.children << self
+        end
+            @parent = parent1
+        
+        
+
+    end
+
+    def add_child
 
     end
 
