@@ -2,6 +2,7 @@ require_relative '../W3D5/poly_tree_node/lib/00_tree_node.rb'
 
 class KnightPathFinder
     attr_reader :start , :considered_positions
+    attr_accessor :root_node
 
     MOVES = [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]]
 
@@ -43,10 +44,10 @@ class KnightPathFinder
      
     def build_move_tree
         #set up a tree
-        root_node = PolyTreeNode.new(@start)
-        queue = [root_node]
-        until queue.empty?
-            current_node = queue.shift
+        self.root_node = PolyTreeNode.new(@start)
+        nodes = [@root_node]
+        until nodes.empty?
+            current_node = nodes.shift
 
             pos = self.new_move_positions(current_node.value) 
             #new positions, we will need to turn the positions into nodes
@@ -54,14 +55,32 @@ class KnightPathFinder
             pos.each do |next_pos|
                next_node = PolyTreeNode.new(next_pos)
                current_node.add_child(next_node)
-               queue << next_node
+               nodes << next_node
             end
-            
         end
         nil
     end
+
+    def trace_path_back(end_node)
+        nodes = []
+
+        until end_node.nil?
+            nodes << end_node
+            end_node = end_node.parent
+        end
+        nodes
+    end
+
+    def find_path(end_pos)
+        end_node = root_node.dfs(end_pos) # return end node instance
+        self.trace_path_back(end_node).map(&:value).reverse
+    end
 end
 
-knight1 = KnightPathFinder.new([0,0])
-knight1.build_move_tree
-p knight1.considered_positions.length
+kpf = KnightPathFinder.new([0,0])
+kpf.build_move_tree
+puts kpf.considered_positions.length
+
+p kpf.find_path([7,6])
+puts
+p kpf.find_path([6,2])
