@@ -31,19 +31,6 @@ def two_sum?(arr,target)
     return false
 end
 
-def two_sum2?(arr, target)
-  hash = Hash.new(0)
-
-  arr.each do |ele|
-    hash[ele] = target - ele
-  end
-
-  hash.each_value do |v|
-    return true if arr.any?(v)
-  end
-
-  false
-end
 
 arr = [0, 1, 5, 7]
 

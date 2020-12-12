@@ -44,17 +44,14 @@ end
 
 # o(n) linear, space advantage
 def fifth_anagram?(str1, str2)
-    hash_str = Hash.new(0)
+    hash = Hash.new(0)
 
-    str1.each_char do |letter|
-        hash_str[letter] += 1
-    end
-    str2.each_char do |letter|
-        return false if !str2.include?(letter)
-        hash_str[letter] -= 1
-    end
+    str1.each_char {|char| hash[char] += 1}
 
-    hash_str.values.all? {|n| n == 0 }
+    str2.each_char {|char| hash[char] -= 1}
+
+
+    hash.values.all? {|v| v == 0 }
 
 end
 
