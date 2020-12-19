@@ -28,31 +28,25 @@ end
 
 # o(n + m) linear
 def fourth_anagram?(str1, str2)
-    hash_str1 = Hash.new(0)
-    hash_str2 = Hash.new(0)
+    hash1= Hash.new(0)
+    hash2 = Hash.new(0)
 
-    str1.each_char do |letter|
-        hash_str1[letter] += 1
-    end
-    str2.each_char do |letter|
-        hash_str2[letter] += 1
-    end
+    str1.each_char {|char| hash1[char] += 1}
+    str2.each_char {|char| hash2[char] += 1}
 
-    hash_str1 == hash_str2
+    hash1 == hash2
 
 end
 
 # o(n) linear, space advantage
+# o(1) space complexity; fixed number: 26 alphabets
 def fifth_anagram?(str1, str2)
     hash = Hash.new(0)
 
     str1.each_char {|char| hash[char] += 1}
-
     str2.each_char {|char| hash[char] -= 1}
 
-
     hash.values.all? {|v| v == 0 }
-
 end
 
 p fifth_anagram?("gizmo", "sally")    #=> false
