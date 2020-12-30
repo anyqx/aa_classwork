@@ -22,7 +22,6 @@ body {
 .header-nav {
     display: flex;
     margin: 0 auto;
-    width: 900px;
     border-left: 1px white;
     border-right: 1px white;
 }
@@ -30,6 +29,7 @@ body {
 .header-logo {
     border-right: 1px;
     font-weight: 700;
+    width: 900px;
 }
 
 .header-logo:hover{
