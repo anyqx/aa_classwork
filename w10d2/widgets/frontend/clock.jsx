@@ -4,7 +4,7 @@ class Clock extends React.Component {
     constructor(props) {
         super(props);
         this.state = {time: new Date()}
-        this.tick.bind(this)
+        this.tick = this.tick.bind(this)
     }
 
     componentDidMount() {
@@ -28,10 +28,15 @@ class Clock extends React.Component {
         return(
             <>
                 <h1>This is your clock!</h1>
+                <br/>
+                <div>
+                    <p>{hours}:{minutes}:{seconds}</p>
+                    <br/>
+                </div>
             </>
         )
     }
 }
 
 
-export default Clock
+export default Clock;

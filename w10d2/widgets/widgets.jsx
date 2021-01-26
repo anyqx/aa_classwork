@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Congrats from './congrats';
+
+import Clock from './frontend/clock'
+
+function Root(){
+  return(
+    <div>
+      <Clock />
+
+    </div>
+  )
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-  const root = document.getElementById("root");
-  ReactDOM.render(<Congrats/>, root);
+  ReactDOM.render(<Root/>, document.getElementById('main'));
 });
