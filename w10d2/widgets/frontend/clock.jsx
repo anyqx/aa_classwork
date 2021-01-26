@@ -4,6 +4,16 @@ class Clock extends React.Component {
     constructor(props) {
         super(props);
         this.state = {time: new Date()}
+        this.tick.bind(this)
+    }
+
+    componentDidMount() {
+        this.intervalId = setInterval(this.tick, 1000)
+    }
+
+    componentWillUnmount() {
+       // this.intervalId = setInterval(this.tick, 1000)
+        clearInterval(this.intervalId)
     }
 
     tick() {
@@ -11,9 +21,9 @@ class Clock extends React.Component {
     }
 
     render() {
-        let hours = this.date.time.getHours();
-        let minutes = this.date.time.getMinutes();
-        let seconds= this.date.time.getSeconds();
+        let hours = this.state.time.getHours();
+        let minutes = this.state.time.getMinutes();
+        let seconds= this.state.time.getSeconds();
 
         return(
             <>
