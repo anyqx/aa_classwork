@@ -7,8 +7,8 @@ function Root(){
   return(
     <div>
       <Clock />
-
     </div>
+
   )
 }
 
