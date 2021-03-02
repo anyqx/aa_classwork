@@ -1,0 +1,5 @@
+Event.create!(date: Date.new(2015, 1, 24), description: "Attending Captain Kirk's birthday")
+Event.create!(date: Date.new(2017, 9, 5), description: "Celebrating Labor Day")
+Event.create!(date: Date.new(2015, 3, 21), description: "Attending Robert's birthday")
+Event.create!(date: Date.new(2018, 9, 16), description: "Celebrating Independence Day")
+Event.create!(date: Date.new(1933, 1, 1), description: "Attending the SF Ballet 80 year anniversary")
